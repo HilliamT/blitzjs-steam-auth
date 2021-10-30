@@ -1,13 +1,15 @@
-import { Ctx } from "blitz"
-import db from "db"
+import router from "app/lib/router"
+import { Ctx, Middleware } from "blitz"
 
-export default async function getCurrentUser(_ = null, { session }: Ctx) {
-  if (!session.userId) return null
+export const middleware: Middleware[] = [
+  async (req, res, next) => {
+    await router.run(req, res)
+    res.blitzCtx.user = (req as any).user
+    await next()
+  },
+]
 
-  const user = await db.user.findFirst({
-    where: { id: session.userId },
-    select: { id: true, name: true, email: true, role: true },
-  })
-
-  return user
+export default async function getCurrentUser(_ = null, { session, user }: Ctx) {
+  if (user == null) return { loggedIn: false }
+  return { ...user, loggedIn: true }
 }

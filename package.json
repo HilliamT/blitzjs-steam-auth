@@ -25,11 +25,18 @@
   },
   "dependencies": {
     "@prisma/client": "3.3.0",
+    "autoprefixer": "10.4.0",
     "blitz": "0.41.1",
+    "cookie-session": "1.4.0",
     "final-form": "4.20.4",
+    "next-connect": "0.11.0",
+    "passport": "0.4.1",
+    "passport-steam": "1.0.17",
+    "postcss": "8.2.15",
     "react": "alpha",
     "react-dom": "alpha",
     "react-final-form": "6.5.7",
+    "tailwindcss": "2.1.2",
     "zod": "3.11.6"
   },
   "devDependencies": {
