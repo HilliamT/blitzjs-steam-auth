@@ -7,7 +7,7 @@ export type Role = "ADMIN" | "USER"
 declare module "blitz" {
   export interface Ctx extends DefaultCtx {
     session: SessionContext
-    user: { loggedIn: boolean; id?: string; displayName?: string; photos?: [{ value: string }] }
+    user: { loggedIn: boolean; id?: string; displayName?: string; photos?: { value: string }[] }
   }
   export interface Session {
     isAuthorized: SimpleRolesIsAuthorized<Role>
