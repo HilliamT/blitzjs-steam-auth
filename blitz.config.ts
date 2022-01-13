@@ -1,7 +1,13 @@
+import router from "app/lib/router"
 import { BlitzConfig, sessionMiddleware, simpleRolesIsAuthorized } from "blitz"
 
 const config: BlitzConfig = {
   middleware: [
+    async (req, res, next) => {
+      await router.run(req, res)
+      res.blitzCtx.user = (req as any).user
+      await next()
+    },
     sessionMiddleware({
       cookiePrefix: "blitzjs-steam-auth",
       isAuthorized: simpleRolesIsAuthorized,
