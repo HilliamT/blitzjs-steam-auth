@@ -6,7 +6,7 @@ const Home: BlitzPage = () => {
   const currentUser = useCurrentUser()
 
   return (
-    <div className="text-center">
+    <div className="text-center flex justify-center">
       {currentUser.loggedIn ? (
         <div>
           Welcome back!
