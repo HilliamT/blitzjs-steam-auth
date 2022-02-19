@@ -13,6 +13,11 @@ const config: BlitzConfig = {
       isAuthorized: simpleRolesIsAuthorized,
     }),
   ],
+  env: {
+    SESSION_SECRET: process.env.SESSION_SECRET,
+    DOMAIN: process.env.DOMAIN,
+    STEAM_API_KEY: process.env.STEAM_API_KEY,
+  },
   /* Uncomment this to customize the webpack config
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Note: we provide webpack above so you should not `require` it
